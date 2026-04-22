@@ -440,7 +440,7 @@ function calculateAll() {
         
         // Hiển thị ra các ô "Tổng TL Vàng" và "Quy Đổi" cho người dùng thấy giá trị sau khi đã nhân số lượng
         tr.querySelector('.br_tl_vang').value = row_tlVang > 0 ? fmtGold(row_tlVang) : '';
-        tr.querySelector('.br_quydoi').value = row_quyDoi > 0 ? fmtGold(row_quyDoi) : '';
+        tr.querySelector('.br_quydoi').value = row_quyDoi > 0 ? fmtGoldTotal(row_quyDoi) : '';
     }
   });
 
@@ -480,7 +480,7 @@ function calculateAll() {
         deTotalQuyDoi += sauQuyDoi;
         
         tr.querySelector('.de_tl_vang').value = fmtGold(tlVang);
-        tr.querySelector('.de_sau_quydoi').value = fmtGold(sauQuyDoi);
+        tr.querySelector('.de_sau_quydoi').value = fmtGoldTotal(sauQuyDoi);
     }
   });
 
