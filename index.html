@@ -279,7 +279,8 @@ function fmtGold(num) { return Number(num).toFixed(2); }
 function fmtGoldTotal(num) { return Number(num).toFixed(3); } 
 
 // --- LOGIC LƯU LÊN SHEET QUA N8N ---
-sync function saveAndPrint() {
+// --- LOGIC LƯU LÊN SHEET QUA N8N ---
+async function saveAndPrint() {
   calculateAll(); // Cập nhật lại số liệu
 
   const sdt = document.getElementById('dien_thoai').value.trim();
@@ -329,9 +330,11 @@ sync function saveAndPrint() {
     ngay: document.getElementById('ngay_toa').value,
     khach_hang: khachHang || "Khách vãng lai",
     sdt: sdt,
+    da_tra_vang: (parseFloat(document.getElementById('sum_khach_tra_vang').value) || 0).toFixed(3) + " chỉ",
     no_vang: document.getElementById('sum_khach_no_vang').value,
+    da_tra_tien: (parseFloat(document.getElementById('sum_khach_thanh_toan_tien').value) || 0).toLocaleString('vi-VN') + " đ",
     no_tien: document.getElementById('sum_khach_no_tien').value,
-    chi_tiet: fullChiTiet // Truyền toàn bộ text chi tiết vào đây
+    chi_tiet: fullChiTiet
   };
 
   // ĐIỀN LINK WEBHOOK N8N CỦA BẠN VÀO ĐÂY
@@ -362,7 +365,6 @@ sync function saveAndPrint() {
     btn.disabled = false;
   }
 }
-
 // --- HÀNG BÁN RA ---
 let brCount = 0;
 function addRowBR() {
